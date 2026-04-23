@@ -141,16 +141,16 @@ Very first step in configuring SQL Server 2019 cluster is to have Windows Cluste
 
 # 5. Installation of iScassi Target
 
-# As mentioned in very first video and also in image, DC Server / Node will also act as Storage or SAN. We will create 6 drives there as below
+As mentioned in very first video and also in image, DC Server / Node will also act as Storage or SAN. We will create 6 drives there as below
 
     2 Data Drives (5 GB Each) - Data01 (G) & Data02 (H)
     2 Log Drives (3 GB Each) - Log01 (L) & Log02 (M)
     2 Temp Drives (2 GB Each) - Temp01 (T) & Temp02 (U)
     Quorum Drive (1 GB)
 
-# These drives will share with other nodes, wherein we will actually install & configure SQL Server 2019 Active \ Active Cluster.
+These drives will share with other nodes, wherein we will actually install & configure SQL Server 2019 Active \ Active Cluster.
 
-# Now, in order to create & share \ present these drives (iscasi luns) to other nodes, we need to follow following steps
+Now, in order to create & share \ present these drives (iscasi luns) to other nodes, we need to follow following steps
 # a. Installation of iSCSI Target Server
 
     1. Open Server Manager
