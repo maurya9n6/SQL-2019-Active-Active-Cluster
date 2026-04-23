@@ -9,3 +9,12 @@
 <br> SQL Server 2019 Cluster - 5 : Installation of iScassi Target https://youtu.be/0JyKAa58zsk
 <br> SQL Server 2019 Cluster - 6 : Creating Shared Storage Drives https://youtu.be/bYOgJdZEHns
 <br> SQL Server 2019 Cluster - 7 : Configuring Shared Drives on other nodes https://youtu.be/wvnI9Hk1lHM
+
+
+
+
+
+
+
+
+# How to configure SQL Server 2019 Active / Active Cluster on Windows Server 2019 Cluster
