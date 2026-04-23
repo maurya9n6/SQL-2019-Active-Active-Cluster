@@ -18,3 +18,5 @@
 
 
 # How to configure SQL Server 2019 Active / Active Cluster on Windows Server 2019 Cluster
+
+<img width="790" height="652" alt="ActiveActiveSQLCluster" src="https://github.com/user-attachments/assets/47ca02ce-76fc-4873-9ddb-3a0e6fdde6ca" />
