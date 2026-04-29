@@ -5,10 +5,6 @@
 <br> SQL Server 2019 Cluster - 1 : Installation of Win Server 2019 https://youtu.be/xJ_WJ_p0qjk
 <br> SQL Server 2019 Cluster - 2 : Configuring Active Directory Domain Controller https://youtu.be/oWJPw8WTW9c
 <br> SQL Server 2019 Cluster - 3 : Configuring of Node1 & Node2 https://youtu.be/LYLVX24hPg8
-<br> SQL Server 2019 Cluster - 4 : Adding nodes to Domain https://youtu.be/x54OX4iRjdg
-<br> SQL Server 2019 Cluster - 5 : Installation of iScassi Target https://youtu.be/0JyKAa58zsk
-<br> SQL Server 2019 Cluster - 6 : Creating Shared Storage Drives https://youtu.be/bYOgJdZEHns
-<br> SQL Server 2019 Cluster - 7 : Configuring Shared Drives on other nodes https://youtu.be/wvnI9Hk1lHM
 
 
 
@@ -127,85 +123,4 @@ Very first step in configuring SQL Server 2019 cluster is to have Windows Cluste
     # Disable Firewall
 
      1. Control Panel --> System and Security --> Windows Defender Firewall --> Turn Off Windows Defender Firewall
-
-# 4. Adding nodes to Domain
-
-    Validate if you can ping to Domain from both the nodes - ping gogates.local
-    Assign domain name for both nodes
-        This PC --> Properties --> Advanced System Settings --> Member Of Domain - gogates.local
-        Specify credentials for Domain Admin - gogates\Administrator & P@ssword#123
-        Restart server
-        Follow same steps for both nodes
-        While logging you should be able to login as Domain Administrator user instead of local Administrator
-        Validate nodes in Domain Controller using "Active Directory Users and Computers"
-
-# 5. Installation of iScassi Target
-
-As mentioned in very first video and also in image, DC Server / Node will also act as Storage or SAN. We will create 6 drives there as below
-
-    2 Data Drives (5 GB Each) - Data01 (G) & Data02 (H)
-    2 Log Drives (3 GB Each) - Log01 (L) & Log02 (M)
-    2 Temp Drives (2 GB Each) - Temp01 (T) & Temp02 (U)
-    Quorum Drive (1 GB)
-
-These drives will share with other nodes, wherein we will actually install & configure SQL Server 2019 Active \ Active Cluster.
-
-Now, in order to create & share \ present these drives (iscasi luns) to other nodes, we need to follow following steps
-# a. Installation of iSCSI Target Server
-
-    1. Open Server Manager
-    2. Local Server --> Manage --> Add Roles & Features
-    3. Installation Type --> Role Based Installation
-    4. Select local server - this is a default option
-    5. Server Roles --> Select - File & Storage Services --> iSCSI Target Server
-    6. Install        
-
-# b. Add NIC Cards to all 3 nodes in network for iSCSI communication
-
-    1. Player --> Manage --> Virtual Machine Settings 
-    2. Click Add --> Select Network Adapter
-    3. Assign static IP Address for all 3 nodes as below
-       - for DC             -- 10.0.0.10
-       - for gogate-node-1  -- 10.0.0.15
-       - for gogate-node-2  -- 10.0.0.20
-    4. Disable Windows Firewall
-    5. Check the connectivity from DC
-
-# c. Creating Shared Disks on Domain Controller
-
-    1. Open Server Manager
-    2. Select "File & Storage Services"
-    3. Select "iSCSI"
-    4. Tasks --> "New iSCSI Virtual Disk"
-    5. Specify Disk Name
-    6. Specify Disk Size
-    7. Add Target IP Address 10.0.0.15 & 10.0.0.20
-    8. Repeat process for all drives which needs to be added
-
-# d. Configuring Shared Drives on gogate-node-1 & gogate-node-2
-
-    1. Open "iSCSI initiator"
-    2. Specify target - 10.0.0.10
-    3. Click on Volumes & Devices --> Auto Configure
-    4. To format disk - Open "Disk Management"
-    5. Select disks and make online (Right click on each disk)
-    6. Once its online -- right click --> Initialize Disk
-    7. Select "GPT - GUID Partition Table" --> 
-    8. Click on Drive (once its online) & click "New Simple Volume"
-    9. Specify Drive Letter
-    10. Specify following settings
-       - File System - NTFS
-       - Allocation Unit Size -- 64 KB (https://blog.sqlserveronline.com/2017/12/08/sql-server-64kb-allocation-unit-size/)
-       - Volume Label
-       - Select "Perform Quick Format"
-       - Finish
-    11. Repeat same for all available drives
-    12. Once node-1 configuration is finished, make all drives offline
-    13. Open "iSCSI Initiator" on 2nd node
-    14. Specify target - 10.0.0.10
-    15. Click on Volumes & Devices --> Auto Configure
-    16. Open "Disk Management"
-    17. Select disks and make online (Right click on each disk)
-    18. Right click on each drive --> Select "Change Drive Letter" & match it exactly what we had given for Node1
-
 
