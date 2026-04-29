@@ -35,7 +35,7 @@ Very first step in configuring SQL Server 2019 cluster is to have Windows Cluste
     Allocate IP Address
     # Computer Name
 
-     1. This PC --> Properties --> Advanced System Settings --> Computer Name (gogate-dc-1)
+     1. This PC --> Properties --> Advanced System Settings --> Computer Name (Ratnesh-dc-1)
 
     # IP Addresses
 
@@ -66,11 +66,11 @@ Very first step in configuring SQL Server 2019 cluster is to have Windows Cluste
 2. Click More
 3. Select Action - Promote server to domain controller
 4. Add a new forest (Since we don't have any existing domain)
-5. Give domain name as - gogates.local [you can give any name which you want eg. abc.xyz.pqr]
+5. Give domain name as - Ratnesh.local [you can give any name which you want eg. abc.xyz.pqr]
 6. Click Next
 7. Specify DSRM (directory service recovery mode) password
 8. No need to create DNS deligation
-9. NetBIOS domain name -- keep it default (it will appear as gogates as we had mentioned domain as gogates.local)
+9. NetBIOS domain name -- keep it default (it will appear as gogates as we had mentioned domain as Ratnesh.local)
 10. Paths - Keep it default
 11. Install
 12. Restart & Login with Doamin User this time
@@ -87,7 +87,7 @@ Very first step in configuring SQL Server 2019 cluster is to have Windows Cluste
     Allocate IP Address
     # Computer Name
 
-     1. This PC --> Properties --> Advanced System Settings --> Computer Name (gogate-node-1)
+     1. This PC --> Properties --> Advanced System Settings --> Computer Name (Ratnesh-node-1)
 
     # IP Addresses
 
@@ -109,7 +109,7 @@ Very first step in configuring SQL Server 2019 cluster is to have Windows Cluste
     Allocate IP Address
     # Computer Name
 
-     1. This PC --> Properties --> Advanced System Settings --> Computer Name (gogate-node-2)
+     1. This PC --> Properties --> Advanced System Settings --> Computer Name (Ratnesh-node-2)
 
     # IP Addresses
 
@@ -121,6 +121,7 @@ Very first step in configuring SQL Server 2019 cluster is to have Windows Cluste
         - Alternet DNS Server : Keep blank
 
     # Disable Firewall
+     1. Control Panel --> System and Security --> Windows Defender Firewall --> Turn Off Windows Defender Firewall
 
      1. Control Panel --> System and Security --> Windows Defender Firewall --> Turn Off Windows Defender Firewall
 
