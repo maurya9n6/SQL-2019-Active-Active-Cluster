@@ -124,4 +124,15 @@ Very first step in configuring SQL Server 2019 cluster is to have Windows Cluste
      
 
      1. Control Panel --> System and Security --> Windows Defender Firewall --> Turn Off Windows Defender Firewall
+    # Adding nodes to Domain
+
+    1- Validate if you can ping to Domain from both the nodes - ping gogates.local
+    Assign domain name for both nodes
+        This PC --> Properties --> Advanced System Settings --> Member Of Domain - gogates.local
+        Specify credentials for Domain Admin - gogates\Administrator & P@ssword#123
+        Restart server
+        Follow same steps for both nodes
+        While logging you should be able to login as Domain Administrator user instead of local Administrator
+        Validate nodes in Domain Controller using "Active Directory Users and Computers"
+
 
